@@ -1,0 +1,57 @@
+button {
+  height: 45px;
+  border-radius: 20px;
+  border: none;
+  font-size: 1.5rem;
+  background: #F0F0F0;
+  color: #696969;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+button:hover {
+  background: #D3D3D3;
+}
+
+button.equals, button.shift {
+  background: blue;
+  color: white;
+}
+
+button.mood:hover {
+  background: #696969;
+  color: white;
+}
+
+button.equals:hover {
+  transform: scale(1.03);
+}
+
+button.shift {
+  height: 35px;
+  width: 100px;
+  justify-self: center;
+  align-self: center;
+  border-radius: 7px;
+}
+
+button.shift {
+  border: 2px solid rgb(0, 25, 128);
+}
+
+button.shift:hover{
+  background: rgb(0, 25, 128);
+}
+
+button.operation, button.clear, button.sign, button.trig {
+  background: #E0EFFF;
+  color: rgb(27, 26, 26);
+}
+
+button.mood, button.trig {
+  color: rgb(0, 25, 128);
+}
+
+button.operation:hover, button.clear:hover, button.sign:hover, button.trig:hover {
+  background: #b8c4d1;
+}
