@@ -64,6 +64,7 @@ const App = () => {
   const [isShift, setIsShift] = useState(false);
   const [isBtn, setBtn] = useState(btnValues);
   const [mood, setMood] = useState("RAD");
+  const [round, setRound] = useState(5);
   
   const numClickHandler = (e) => {
     e.preventDefault();
@@ -182,7 +183,7 @@ const App = () => {
         .replace(/sin-1/g, 'asin')
         .replace(/cos-1/g, 'acos')
         .replace(/tan-1/g, 'atan'))
-      let result = math.round(resultBrut, 5);
+      let result = resultBrut.toFixed(round);
 
       let finalExpression;
       if (calc.operation) {
@@ -549,7 +550,22 @@ const App = () => {
     }
   };
 
+  const incrementer = () => {
+    if (round < 7) {
+      const nextValue = round + 1;
+      setRound(nextValue);
+    }
+  };
+
+  const decrementer = () => {
+    if (round > 0) {
+      const nextValue = round - 1;
+      setRound(nextValue);
+    }
+  };
+  
   return (
+  <div>
     <Wrapper>
       <Screen 
         cursor={isPower}
@@ -609,8 +625,34 @@ const App = () => {
           />
         ))}
       >
+        
       </ButtonBox>
     </Wrapper>
+    <div className="nd-party">
+      <div className="around-area">
+        <div className="around-box">
+          <button 
+            onClick={decrementer}
+           disabled={round === 0}
+          >
+            ▼
+          </button>
+
+          <span>l'arrondissement :</span>
+          <div className="around"> {round}</div>
+        
+          <button 
+          onClick={incrementer}
+           disabled={round === 7}
+          >
+            ▲
+          </button>
+        </div>
+        <p>{"X." + Array(round).fill("x").map((item) => item).join("")}</p>
+      </div>
+
+    </div>
+  </div>
   );
 };
 
