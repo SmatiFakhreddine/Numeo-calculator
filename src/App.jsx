@@ -72,7 +72,7 @@ const App = () => {
     if (calc.num === "0" && value === "0") return;
     
     let newNum;
-    if (calc.waitingForNumber || calc.num == 0) {
+    if (calc.waitingForNumber || calc.num === 0) {
       newNum = value;
     } else {
       newNum = calc.num.toString() + value;
@@ -184,6 +184,8 @@ const App = () => {
         .replace(/cos-1/g, 'acos')
         .replace(/tan-1/g, 'atan'))
       let result = resultBrut.toFixed(round);
+      const zero = 0;
+      result = Number(result) == 0 ? zero.toFixed(round) : result;
 
       let finalExpression;
       if (calc.operation) {
@@ -221,7 +223,7 @@ const App = () => {
   const notOper = lastItem != ")" && lastItem != "⁾" ? true : false;
 
   const invertClickHandler = () => {
-    if (calc.num !== 0) {
+    if (calc.num != 0) {
       let inverted = Number(removeSpaces(calc.num)) * -1;
       let length = calc.num.toString().length;
       const operation = calc.operation.toString().split(' ');
@@ -242,7 +244,7 @@ const App = () => {
   };
 
   const percentClickHandler = () => {
-    if (calc.num !== 0) {
+    if (calc.num != 0) {
       const percentValue = Number(removeSpaces(calc.num)) / 100;
       let length = calc.num.toString().length;
       const operation = calc.operation.toString().split(' ');
